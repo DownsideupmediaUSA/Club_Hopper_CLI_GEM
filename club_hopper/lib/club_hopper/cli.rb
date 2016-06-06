@@ -11,8 +11,8 @@ class ClubHopper::CLI
  def list_events
   puts "This Weekend's Techno Events In NYC!"
   @events = ClubHopper::Event.this_week
-  @events.each.with_index(1) do |deal, i|
-    puts "#{i}. #{deal}"
+  @events.each.with_index(1) do |event, i|
+    puts "#{i}. #{event.name} - #{event.date} - #{event.price} - #{event.availability}"
    end
  end
 
@@ -23,11 +23,13 @@ class ClubHopper::CLI
     input = gets.strip.downcase
 
     if input.to_i > 0
-      puts @events[input.to_i-1]
+      the_event = @events[input.to_i-1]
+      puts "#{the_event.name} - #{the_event.date} - #{the_event.price} - #{the_event.availability}"
     elsif input == "list"
       list_events
+
     else
-    puts "Not sure what you want. Please type list or exit."
+    puts "Not sure what you want, please type list or exit."
    end
  end
 end
