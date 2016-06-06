@@ -3,12 +3,7 @@ class ClubHopper::Event
 
   def self.this_week
   #Returns list of this weeks events.
-  puts <<-DOC
 
-    1. Dennis Ferrer 06/10/2016 - Flash Factory
-    2. Hercules & Love Affair 06/10/2016 - Output 
-    3. Paco Osuna 12/31/2016 - Space NYC
-  DOC
 
    event_1 = self.new
    event_1.name = "Dennis Ferrer 06/10/2016 - Flash Factory"

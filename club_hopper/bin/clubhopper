@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 
 
-require './lib/club_hopper'
+require "bundler/setup"
+require "club_hopper"
 
 ClubHopper::CLI.new.call
