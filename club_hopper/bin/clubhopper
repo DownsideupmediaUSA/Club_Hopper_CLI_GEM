@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+
+
+require './lib/club_hopper'
+
+ClubHopper::CLI.new.call
