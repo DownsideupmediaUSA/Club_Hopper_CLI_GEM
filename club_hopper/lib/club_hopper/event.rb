@@ -1,34 +1,44 @@
 class ClubHopper::Event
-  attr_accessor :name, :date, :price, :availability, :url 
+  attr_accessor :name, :date 
+ 
 
-  def self.this_week
-  #Returns list of this weeks events.
+
+ 
   
 
-   event_1 = self.new
-   event_1.name = "Dennis Ferrer 06/10/2016 - Flash Factory"
-   event_1.date = "Friday 06/10/2016"
-   event_1.price = "$20.00"
-   event_1.availability = true
-   event_1.url = "https://www.ticketfly.com/purchase/event/1207017"
-
-   event_2 = self.new
-   event_2.name = "Hercules & Love Affair 06/10/2016 - Output"
-   event_2.date = "Friday 06/10/2016"
-   event_2.price = "$20.00"
-   event_2.availability = true
-   event_2.url = "http://outputclub.com/#post-4066"
- 
-   event_3 = self.new
-   event_3.name = "Paco Osuna 06/10/2016"
-   event_3.date = "Saturday 06/11/2016"
-   event_3.price = "$20.00"
-   event_3.availability = true
-   event_3.url = "https://www.ticketmob.com/integrate/event.cfm?originURL=http%3A%2F%2Fwww%2Espaceibizany%2Ecom%2F&siteID=583&brandProperty=ES&showTimingID=166570"
-
-  [event_1, event_2, event_3]
+  def self.this_saturday   
+  #Returns list of this weeks events.
+  self.scrape_event
   end
- end
+  
+  def self.scrape_event
+  events = []
+  events << self.scrape_outputNYC
+  
+  end
+
+   def self.scrape_outputNYC 
+     doc = Nokogiri::HTML(open("http://outputclub.com/"))
+
+     event = self.new
+     event.name = doc.css("#content > article.post-4070.post.type-post.status-publish.format-standard.hentry.category-uncategorized > ul > li > h2:nth-child(1)").text.strip  
+     event.date = doc.css("#content > article.post-4090.post.type-post.status-publish.format-standard.hentry.category-uncategorized > h1:nth-child(2)").text
+
+     event
+     end
+  end
+
+
+
+ 
+
+
+
+
+
+
+
+ 
 
 
 

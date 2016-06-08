@@ -10,9 +10,9 @@ class ClubHopper::CLI
 
  def list_events
   puts "This Weekend's Techno Events In NYC!"
-  @events = ClubHopper::Event.this_week
+  @events = ClubHopper::Event.this_saturday
   @events.each.with_index(1) do |event, i|
-    puts "#{i}. #{event.name} - #{event.date} - #{event.price} - #{event.availability}"
+    puts "#{i}. #{event.name} - #{event.date} "
    end
  end
 
@@ -24,7 +24,7 @@ class ClubHopper::CLI
 
     if input.to_i > 0
       the_event = @events[input.to_i-1]
-      puts "#{the_event.name} - #{the_event.date} - #{the_event.price} - #{the_event.availability}"
+      puts "#{the_event.name} - #{the_event.date}"
     elsif input == "list"
       list_events
 
