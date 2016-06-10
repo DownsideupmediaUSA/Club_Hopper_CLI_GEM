@@ -15,22 +15,18 @@ A command line interface for info on this weekends events
 
 -welcomes the user
 
--asks user to select a day (Friday or Saturday)
-
--shows list of events from  for day selected
+-shows list of events for the upcoming weekend
 
 for example:
 
 1.)CieloNYC(guest & event date) 2.)Outputclub(guest & event date)
 
 
--asks user to select club (number) to find out more information
-
-User selects from list
+-asks user to select event (number) to find out more information or can type list to see list of choices of events again or type exit out of program
 
 -shows event details/ ticket info
 
--user can type list to see list of choices of events again or type exit out of program
+
 
 
 
