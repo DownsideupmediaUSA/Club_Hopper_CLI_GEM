@@ -10,7 +10,7 @@ class ClubHopper::CLI
 
  def list_events
   puts "This Weekend's Techno Events In NYC!"
-  @events = ClubHopper::Event.this_saturday
+  @events = ClubHopper::Event.this_friday
   @events.each.with_index(1) do |event, i|
     puts "#{i}. #{event.name} - #{event.date} "
    end
@@ -19,18 +19,20 @@ class ClubHopper::CLI
  def menu
     input = nil
     while input != "exit"
-    puts "Please enter the number of the event you would like more info on or enter list to see the list again or press exit to exit."
+    puts "Please enter the number of the event you would like more info on or type list to see the list again or press exit to exit."
     input = gets.strip.downcase
 
     if input.to_i > 0
       the_event = @events[input.to_i-1]
       puts "#{the_event.name} - #{the_event.date}"
-    elsif input == "list"
-      list_events
+    elsif input == "list"    
+    list_events
 
     else
     puts "Not sure what you want, please type list or exit."
+    menu
    end
+
  end
 end
 

@@ -11,19 +11,26 @@ start making things real
 discover objects
 program
 
-A command line interface for top new techno releases starting with Beatport and Juno.
+A command line interface for info on this weekends events
 
+-welcomes the user
 
+-asks user to select a day (Friday or Saturday)
 
--shows list of events from 3 NYC clubs this weekend
+-shows list of events from  for day selected
 
-1)Output (guests) 2)Flash Factory(guests) 3)SpaceNYC(guests)
+for example:
+
+1.)CieloNYC(guest & event date) 2.)Outputclub(guest & event date)
+
 
 -asks user to select club (number) to find out more information
 
-User selects
+User selects from list
 
 -shows event details/ ticket info
+
+-user can type list to see list of choices of events again or type exit out of program
 
 
 
