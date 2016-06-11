@@ -24,6 +24,9 @@ class ClubHopper::Event
      event = self.new
      event.name = doc.css("#content > article.post-4070.post.type-post.status-publish.format-standard.hentry.category-uncategorized > ul > li > h2:nth-child(1)").text.strip  
      event.date = doc.css("#content > article.post-4090.post.type-post.status-publish.format-standard.hentry.category-uncategorized > h1:nth-child(2)").text
+# It looks like you need to figure out how to dynamically select the events.
+# From what I can see they are all created as "article" entities, so you could try using something like article.first as a selector
+# Here's my gem project if you want to take a look: https://github.com/reifnotreef/fireside-finder
 
      event
      end
