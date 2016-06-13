@@ -3,7 +3,7 @@ class ClubHopper::CLI
   def call
     this_weekend
     what_day
-    list_friday_events || list_saturday_events
+    list_friday_events || list_saturday_events_outputnyc 
     menu
     goodbye
   end
@@ -15,28 +15,21 @@ class ClubHopper::CLI
       1. Friday
       2. Saturday
      DOC
-   end
- 
-  # def list_this_weekend
-  #   puts "The weekend us upon us!!"
-  #   puts <<DOC  
 
-  #   1. Friday
-  #   2. Saturday
-  #   DOC 
-  
-  # end
+     what_day
+   end
 
   def what_day
      input = nil
-    while input != "exit"
-      puts "So you're lookin' to go out, huh... what day? (Or type exit to exit)"
+    # while input != "exit"
+      puts "So you're lookin' to go out, huh... which day?"
       input = gets.strip.downcase
 
       if  input == "1"
         list_friday_events
       elsif input == "2"
         list_saturday_events
+        # list_saturday_events_cielo
       end
       menu
     end
@@ -45,21 +38,23 @@ class ClubHopper::CLI
 
  def list_friday_events
   puts "This Friday's Techno Events In NYC!"
-
   @events = ClubHopper::Event.this_friday
   @events.each.with_index(1) do |event, i|
-    puts "#{i}. #{event.name} - #{event.date} "
+    puts "#{i}. #{event.date} - #{event.name} "
      end
  end
 
  def list_saturday_events
   puts "This Saturday's Techno Events In NYC!"
-  @events = ClubHopper::Event.this_saturday
+  @events = ClubHopper::SatEvent.this_saturday
   @events.each.with_index(1) do |event, i|
     puts "#{i}. #{event.name} - #{event.date} "
-  menu
+ 
   end
- end
+  end
+
+
+ 
 
  def menu
     input = nil
@@ -71,12 +66,14 @@ class ClubHopper::CLI
       the_event = @events[input.to_i-1]
       puts "#{the_event.name} - #{the_event.date}"
     elsif input == "list"    
-    list_events
+      puts "Ok...let's take a step back here... "
+    this_weekend
     else
-    puts "Not sure what you want, please type list or exit."
+    puts "Not sure what you want, take a deep breath...."
+    
      
    end
-
+menu
  end
 end
 
@@ -84,4 +81,4 @@ def goodbye
   puts "See you next time for the hottest techno events in NYC!!"
 end
 
-end
+# end
