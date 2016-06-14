@@ -2,41 +2,36 @@ class ClubHopper::CLI
 
   def call
     this_weekend   
-    
-    # list_friday_events || list_saturday_events 
+    what_day
     menu
     goodbye
+    # list_friday_events || list_saturday_events 
+  
+  
   end
 
 
   def this_weekend
    puts "The weekend is finally upon us!!"
+   puts "So you're lookin' to go out, huh... which day?"
    puts <<-DOC 
       1. Friday
       2. Saturday
      DOC
 
- what_day    
+ # what_day    
    end
 
   def what_day
      input = nil
-    # while input != "exit"
-      puts "So you're lookin' to go out, huh... which day?"
       input = gets.strip.downcase
 
       if  input == "1"
         list_friday_events
       elsif input == "2"
         list_saturday_events
-    #     elsif input == "list"    
-    #   puts "Ok...let's take a step back here... "
-    # this_weekend
-    # else
-    # puts "Not sure what you want, take a deep breath...." 
       end
-      
-    end
+     end
   end
 
 
@@ -71,11 +66,14 @@ class ClubHopper::CLI
       puts "#{the_event.name} - #{the_event.date}"
     elsif input == "list"    
       puts "Ok...let's take a step back here... "
-  this_weekend
+    this_weekend
+  elsif input == "exit"
+    goodbye
+    exit
     else
     puts "Not sure what you want, take a deep breath...." 
    end
-  what_day
+  this_weekend
  end
 end
 
