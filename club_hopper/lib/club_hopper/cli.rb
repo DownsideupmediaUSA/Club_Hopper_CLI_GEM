@@ -29,9 +29,13 @@ class ClubHopper::CLI
         list_friday_events
       elsif input == "2"
         list_saturday_events
-        # list_saturday_events_cielo
+        elsif input == "list"    
+      puts "Ok...let's take a step back here... "
+    this_weekend
+    else
+    puts "Not sure what you want, take a deep breath...." 
       end
-      menu
+      
     end
   end
 
@@ -69,11 +73,9 @@ class ClubHopper::CLI
       puts "Ok...let's take a step back here... "
     this_weekend
     else
-    puts "Not sure what you want, take a deep breath...."
-    
-     
+    puts "Not sure what you want, take a deep breath...." 
    end
-menu
+   menu
  end
 end
 
