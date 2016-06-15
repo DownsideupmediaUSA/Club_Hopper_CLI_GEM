@@ -42,7 +42,7 @@ class ClubHopper::CLI
   puts "This Friday's Techno Event at Output Brooklyn!"
   @events = ClubHopper::Event.this_friday_output
   @events.each.with_index(1) do |event, i|
-    puts "#{i}. #{event.date} - #{event.name} "
+    puts "A. #{event.date} - #{event.name} "
     end
  end
 
@@ -50,7 +50,7 @@ class ClubHopper::CLI
   puts "This Friday's Techno Events at Cielo NYC!"
   @events = ClubHopper::Event.this_friday_cielo
   @events.each.with_index(1) do |event, i|
-    puts "#{i}. #{event.date} - #{event.name} "
+    puts "B. #{event.date} - #{event.name} "
     end
  end
 
@@ -58,7 +58,7 @@ class ClubHopper::CLI
   puts "This Saturday's Techno Events Output Brooklyn!"
   @events = ClubHopper::SatEvent.this_saturday_output
   @events.each.with_index(1) do |event, i|
-    puts "#{i}. #{event.name} - #{event.date} "
+    puts "A. #{event.name} - #{event.date} "
  
   end
  end
@@ -67,7 +67,7 @@ class ClubHopper::CLI
   puts "This Saturday's Techno Events at Cielo NYC!"
   @events = ClubHopper::SatEvent.this_saturday_cielo
   @events.each.with_index(1) do |event, i|
-    puts "#{i}. #{event.name} - #{event.date} "
+    puts "B. #{event.name} - #{event.date} "
  
   end
  end
@@ -90,9 +90,10 @@ class ClubHopper::CLI
     goodbye
     exit
     else
-    puts "Not sure what you want, take a deep breath...." 
+    puts "Not sure what you want, take a deep breath...."
+    this_weekend 
    end
-  this_weekend
+  
  end
 end
 
