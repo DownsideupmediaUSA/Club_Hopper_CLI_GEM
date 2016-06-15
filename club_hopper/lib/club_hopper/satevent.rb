@@ -1,14 +1,25 @@
 class ClubHopper::SatEvent
   attr_accessor :name, :date
 
-  def self.this_saturday   
-    self.scrape_saturday_event
+  def self.this_saturday_output   
+  self.scrape_saturday_event_output
   end
   
-  def self.scrape_saturday_event
-    events = []
-    events << self.scrape_saturday_outputnyc
-    events << self.scrape_saturday_cieloclub 
+  def self.this_saturday_cielo   
+  self.scrape_saturday_event_cielo
+  end
+
+  def self.scrape_saturday_event_output
+  events = []
+  events << self.scrape_saturday_outputnyc
+  # events << self.scrape_friday_cieloclub 
+  end
+
+  def self.scrape_saturday_event_cielo
+  events = []
+  # events << self.scrape_friday_outputnyc
+  events << self.scrape_saturday_cieloclub 
+  
   end
 
   def self.scrape_saturday_outputnyc

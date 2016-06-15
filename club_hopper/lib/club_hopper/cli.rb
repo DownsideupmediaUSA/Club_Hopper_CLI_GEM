@@ -3,6 +3,7 @@ class ClubHopper::CLI
   def call
     this_weekend   
     what_day
+   
     menu
     goodbye
     # list_friday_events || list_saturday_events 
@@ -27,31 +28,49 @@ class ClubHopper::CLI
       input = gets.strip.downcase
 
       if  input == "1"
-        list_friday_events
+        list_friday_event_output
+        list_friday_event_cielo
       elsif input == "2"
-        list_saturday_events
+        list_saturday_event_output  
+        list_saturday_event_cielo
       end
      end
   end
 
 
- def list_friday_events
-  puts "This Friday's Techno Events In NYC!"
-  @events = ClubHopper::Event.this_friday
+ def list_friday_event_output
+  puts "This Friday's Techno Event at Output Brooklyn!"
+  @events = ClubHopper::Event.this_friday_output
   @events.each.with_index(1) do |event, i|
     puts "#{i}. #{event.date} - #{event.name} "
     end
  end
 
- def list_saturday_events
-  puts "This Saturday's Techno Events In NYC!"
-  @events = ClubHopper::SatEvent.this_saturday
+  def list_friday_event_cielo
+  puts "This Friday's Techno Events at Cielo NYC!"
+  @events = ClubHopper::Event.this_friday_cielo
+  @events.each.with_index(1) do |event, i|
+    puts "#{i}. #{event.date} - #{event.name} "
+    end
+ end
+
+ def list_saturday_event_output
+  puts "This Saturday's Techno Events Output Brooklyn!"
+  @events = ClubHopper::SatEvent.this_saturday_output
   @events.each.with_index(1) do |event, i|
     puts "#{i}. #{event.name} - #{event.date} "
  
   end
  end
-
+ 
+  def list_saturday_event_cielo
+  puts "This Saturday's Techno Events at Cielo NYC!"
+  @events = ClubHopper::SatEvent.this_saturday_cielo
+  @events.each.with_index(1) do |event, i|
+    puts "#{i}. #{event.name} - #{event.date} "
+ 
+  end
+ end
 
  
 
