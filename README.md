@@ -13,18 +13,21 @@ program
 
 A command line interface for info on this weekends events
 
--welcomes the user
+-Welcomes the user
 
--shows list of events for the upcoming weekend
+-shows list of venues in NYC area
 
 for example:
 
-1.)CieloNYC(guest & event date) 2.)Outputclub(guest & event date)
+1.)CieloNYC  
+2.)Outputclub 
 
 
--asks user to select event (number) to find out more information or can type list to see list of choices of events again or type exit out of program
+-asks user to select venue (number)  
 
--shows event details/ ticket info
+-asks user to select either Friday or Saturday or type "start" to start from the beginning or "exit" to exit
+
+-shows event details 
 
 
 

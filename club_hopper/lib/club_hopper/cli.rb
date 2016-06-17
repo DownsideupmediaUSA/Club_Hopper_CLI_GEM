@@ -37,12 +37,12 @@
    end
 
    def what_day_output
+     puts "What evening, Friday or Saturday?"
      puts "----------------------------------------"
      puts <<-DOC 
       1. Friday Night
       2. Saturday Night
      DOC
-     puts "What evening, Friday or Saturday?"
      input = nil
      input = gets.strip.downcase
        if input == "1"
