@@ -1,104 +1,139 @@
-class ClubHopper::CLI
+   class ClubHopper::CLI
 
-  def call
-    this_weekend   
-    what_day
-   
-    menu
-    goodbye
-    # list_friday_events || list_saturday_events 
-  
-  
-  end
+   def call
+     start
+     venue  
+     what_venue
+     menu
+     goodbye  
+   end
+
+   def start
+     puts "The weekend is finally upon us!!"
+   end
 
 
-  def this_weekend
-   puts "The weekend is finally upon us!!"
-   puts "So you're lookin' to go out, huh... which day?"
-   puts <<-DOC 
-      1. Friday
-      2. Saturday
+
+
+   def venue
+     puts "So you're lookin' to go out, huh... what club?"
+     puts <<-DOC 
+     1. Output - Brooklyn
+     2. Cielo - Manhattan
      DOC
-
- # what_day    
    end
 
-  def what_day
-     input = nil
-      input = gets.strip.downcase
-
-      if  input == "1"
-        list_friday_event_output
-        list_friday_event_cielo
-      elsif input == "2"
-        list_saturday_event_output  
-        list_saturday_event_cielo
-      end
-     end
-  end
-
-
- def list_friday_event_output
-  puts "This Friday's Techno Event at Output Brooklyn!"
-  @events = ClubHopper::Event.this_friday_output
-  @events.each.with_index(1) do |event, i|
-    puts "A. #{event.date} - #{event.name} "
-    end
- end
-
-  def list_friday_event_cielo
-  puts "This Friday's Techno Events at Cielo NYC!"
-  @events = ClubHopper::Event.this_friday_cielo
-  @events.each.with_index(1) do |event, i|
-    puts "B. #{event.date} - #{event.name} "
-    end
- end
-
- def list_saturday_event_output
-  puts "This Saturday's Techno Events Output Brooklyn!"
-  @events = ClubHopper::SatEvent.this_saturday_output
-  @events.each.with_index(1) do |event, i|
-    puts "A. #{event.name} - #{event.date} "
- 
-  end
- end
- 
-  def list_saturday_event_cielo
-  puts "This Saturday's Techno Events at Cielo NYC!"
-  @events = ClubHopper::SatEvent.this_saturday_cielo
-  @events.each.with_index(1) do |event, i|
-    puts "B. #{event.name} - #{event.date} "
- 
-  end
- end
-
- 
-
- def menu
+   def what_venue
     input = nil
-    while input != "exit"
-    puts "Please enter the number of the event you would like more info on or type 'list' to see the list again or 'exit' to exit."
     input = gets.strip.downcase
-
-    if input.to_i > 0
-      the_event = @events[input.to_i-1]
-      puts "#{the_event.name} - #{the_event.date}"
-    elsif input == "list"    
-      puts "Ok...let's take a step back here... "
-    this_weekend
-  elsif input == "exit"
-    goodbye
-    exit
-    else
-    puts "Not sure what you want, take a deep breath...."
-    this_weekend 
+     if  input == "1" 
+       puts "Ah...Output in Brooklyn huh, excellent!"
+       what_day_output
+     elsif input == "2"
+       puts "Ah...Cielo in Manhattan huh, excellent!"
+       what_day_cielo
+     end
+    end
    end
-  
- end
-end
 
-def goodbye
-  puts "See you next time for the hottest techno events in NYC!!"
-end
+   def what_day_output
+     puts "----------------------------------------"
+     puts <<-DOC 
+      1. Friday Night
+      2. Saturday Night
+     DOC
+     puts "What evening, Friday or Saturday?"
+     input = nil
+     input = gets.strip.downcase
+       if input == "1"
+       list_friday_event_output
+       elsif input == "2"
+       list_saturday_event_output
+    end
+   end 
+    
 
-# end
+     def what_day_cielo
+        puts "What evening, Friday or Saturday?" 
+        puts "----------------------------------------"
+        puts <<-DOC 
+        1. Friday Night
+        2. Saturday Night
+        DOC
+        input = nil
+        input = gets.strip.downcase
+         if input == "1"
+          list_friday_event_cielo
+         elsif input == "2"
+          list_saturday_event_cielo
+       end
+    end 
+     
+
+
+
+   def list_friday_event_output
+     puts "This Friday's Event at Output Brooklyn!"
+     @events = ClubHopper::Output.this_friday_output
+     @events.each.with_index(1) do |event, i|
+     puts "#{i}. #{event.name} - #{event.date}"
+     end
+   end
+
+   def list_saturday_event_output
+     puts "This Saturday's Event Output Brooklyn!"
+     @events = ClubHopper::Output.this_saturday_output
+     @events.each.with_index(1) do |event, i|
+     puts "#{i}. #{event.name} - #{event.date} "
+     end
+   end
+
+   def list_friday_event_cielo
+     puts "This Friday's Event at Cielo NYC!"
+     @events = ClubHopper::Cielo.this_friday_cielo
+     @events.each.with_index(1) do |event, i|
+     puts "#{i}. #{event.date} - #{event.name} "
+     end
+   end
+
+
+
+   def list_saturday_event_cielo
+    puts "This Saturday's Event at Cielo NYC!"
+    @events = ClubHopper::Cielo.this_saturday_cielo
+    @events.each.with_index(1) do |event, i|
+     puts "#{i}. #{event.name} - #{event.date} "
+
+   end
+   end
+
+
+
+   def menu
+     input = nil
+     while input != "exit"
+        puts "Wanna see what else is going on? Type 'start' to see the start again or 'exit' to exit."
+        input = gets.strip.downcase
+
+        if input.to_i > 0
+         the_event = @events[input.to_i-1]
+         puts "#{the_event.name} - #{the_event.date}"
+      elsif input == "start"    
+         puts "Ok...let's see what else is goin' on this weekend... "
+         call
+      elsif input == "exit"
+        goodbye
+        exit
+     else
+        puts "Not sure what you want, take a deep breath...."
+        call
+     end
+     
+   end
+   end
+
+   def goodbye
+    puts "See you next time for the hottest techno/house music events in NYC!!"
+   end
+
+   # end
